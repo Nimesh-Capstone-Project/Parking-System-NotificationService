@@ -1,4 +1,4 @@
-name: Parking Service CI/CD
+name: Notification Service CI/CD
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       release_tag:
-        description: Release tag in the format vX.Y.Z or parking-service-vX.Y.Z
+        description: Release tag in the format notification-service-vX.Y.Z
         required: true
         type: string
 
@@ -21,11 +21,11 @@ jobs:
     with:
       trigger_event: ${{ github.event_name }}
       source_sha: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
-      service_name: parking-service
-      image_name: parking-service
-      helm_values_key: parkingService
-      dev_manifest_path: infra/argocd/dev/parking-service.yaml
-      sonar_key: parking-service
+      service_name: notification-service
+      image_name: notification-service
+      helm_values_key: notificationService
+      dev_manifest_path: infra/argocd/dev/notification-service.yaml
+      sonar_key: notification-service
       docker_context: .
       dockerfile_path: ./Dockerfile
       working_directory: .
@@ -42,11 +42,11 @@ jobs:
     uses: Nimesh-Capstone-Project/Parking-System/.github/workflows/reusable-release.yaml@master
     with:
       release_tag: ${{ inputs.release_tag }}
-      service_name: parking-service
-      image_name: parking-service
-      helm_values_key: parkingService
-      dev_manifest_path: infra/argocd/dev/parking-service.yaml
-      prod_manifest_path: infra/argocd/prod/parking-service.yaml
+      service_name: notification-service
+      image_name: notification-service
+      helm_values_key: notificationService
+      dev_manifest_path: infra/argocd/dev/notification-service.yaml
+      prod_manifest_path: infra/argocd/prod/notification-service.yaml
     secrets:
       TOKEN: ${{ secrets.TOKEN }}
       EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
