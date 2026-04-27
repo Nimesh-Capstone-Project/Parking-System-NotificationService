@@ -25,7 +25,7 @@ jobs:
       image_name: notification-service
       helm_values_key: notificationService
       dev_manifest_path: infra/argocd/dev/notification-service.yaml
-      sonar_key: notification-service
+      sonar_key: Nimesh-Capstone-Project_Parking-System-NotificationService_6aec921f-7f98-4ab9-b558-3cee978b91a7
       docker_context: .
       dockerfile_path: ./Dockerfile
       working_directory: .
